@@ -1,0 +1,10 @@
+pics/*.jpg
+*.idea
+bin/
+include/
+lib/
+share/
+notes.txt
+*.cfg
+*.DS_Store
+*.pyc

@@ -22,13 +22,13 @@ The database is not included.
 ## Graph Visualization
 Each user is a vertex, and connections between users are edges. For now, the graph is handled as an undirected graph. The layout is calculated with using a [force-directed algorithm](https://networkx.org/documentation/stable/reference/generated/networkx.drawing.layout.spring_layout.html#networkx.drawing.layout.spring_layout) from networkx. The layout should be such that accounts that have many common connections are positioned next to each other. Of course, doing this in only two dimensions is extremely limiting. 
 
-Another challenge comes from private accounts, that cause the data to be incomplete. Since the layout algorithm has no knowledge of possible links between two private accounts, it tries to separate them, even though they had exactly the same known connections to (public) accounts. One option is to add *ghost edges* with to counteract the repulsive force between such vertices. This approach is not scalable because the amount of ghost edges required is proportional to |V|^2. 
+Another challenge comes from private accounts, that cause the data to be incomplete. Since the layout algorithm has no knowledge of possible links between two private accounts, it tries to separate them, even though they had exactly the same known connections to (public) accounts. One option is to add *ghost edges* to counteract the repulsive force between such vertices. This approach is not scalable because the amount of ghost edges required is proportional to |V|^2. 
 
 My solution consists of splitting the layout calculation in to two parts: <ol>
-  <li>Only consider the induced by public accounts. Calculate force-directed layout for the subgraph</li>
-  <li>One by one, add private accounts to the layout. Fix the positions of the other accounts. </li>
+  <li>Only consider the subgraph induced by the public accounts. Calculate force-directed layout for the subgraph</li>
+  <li>One by one, add private accounts to the layout. Fix the positions of the other accounts. This way, the positions of the private accounts do not effect each other. </li>
 </ol>
-In practice, the private accounts are added in small chunks instead of one by one. 
+In practice, the private accounts are added in small chunks instead of one by one.
 
 ## Graph Embedding & Bio Analysis
 I'm using [DeepWalk](https://arxiv.org/pdf/1403.6652.pdf), which is a vertex embedding technique similar to [word2vec](https://www.tensorflow.org/tutorials/text/word2vec). In graphs, *sentences* can be obtained with random walks.

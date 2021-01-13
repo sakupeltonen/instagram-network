@@ -1,6 +1,6 @@
 # instagram-network
 
-![graph](/graphs/Screenshot 2021-01-13 at 1.24.39.png)
+![graph](/graphs/example.png)
 Network of Instagram users. [Zoomable PDF](https://github.com/Kuivausrumpusoolo/instagram-network/blob/master/graphs/force_directed10.pdf)
 
 ## Data Collection

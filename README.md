@@ -26,7 +26,7 @@ Another challenge comes from private accounts, that cause the data to be incompl
 
 My solution consists of splitting the layout calculation in to two parts: <ol>
   <li>Only consider the subgraph induced by the public accounts. Calculate force-directed layout for the subgraph</li>
-  <li>One by one, add private accounts to the layout. Fix the positions of the other accounts. This way, the positions of the private accounts do not effect each other. </li>
+  <li>One by one, add private accounts to the layout. Fix the positions of the other accounts. This way, the positions of the private accounts do not affect each other. </li>
 </ol>
 In practice, the private accounts are added in small chunks instead of one by one.
 

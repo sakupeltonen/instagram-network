@@ -29,14 +29,3 @@ My solution consists of splitting the layout calculation in to two parts: <ol>
   <li>One by one, add private accounts to the layout. Fix the positions of the other accounts. This way, the positions of the private accounts do not affect each other. </li>
 </ol>
 In practice, the private accounts are added in small chunks instead of one by one.
-
-## Vertex Embedding & Bio Analysis
-I'm using [DeepWalk](https://arxiv.org/pdf/1403.6652.pdf), which is a vertex embedding technique similar to [word2vec](https://www.tensorflow.org/tutorials/text/word2vec). In graphs, *sentences* can be obtained with random walks. The embedding space is a continuous n-dimensional vector space. This representation is efficient and flexible. It also doesn't suffer from some of the problems caused by private accounts in the layout task. 
-
-So far the random walks are taken with all edges having equal weight (probability). There are many ways to make the embedding more accurate:<ul>
-  <li>Increase the weight of edges to smaller accounts. Connections to small accounts are likely more personal.</li>
-  <li>Weight connections to accounts who engage with the user, eg. comment, like or tag on posts.</li>
-</ul>
-
-I'm looking to connecting information from the bios of the accounts to the embedding of the node. There are many common abbrevations and symbols such as 'CHEM' or §. These could be correlated with some dimensions in the embedding space. 
-The bio of an account is visible regardless of its private status, so this could even be a way to have a high accuracy classification for private accounts as well.
